@@ -773,7 +773,10 @@ func TestIsConfidentialRuntimeClass(t *testing.T) {
 		},
 		Handler: confidentialRuntimeClassHandler,
 	}
-	clientset.NodeV1().RuntimeClasses().Create(ctx, runtimeClass, metav1.CreateOptions{})
+	_, err = clientset.NodeV1().RuntimeClasses().Create(ctx, runtimeClass, metav1.CreateOptions{})
+	if err != nil {
+		t.Fatalf("expected no error, got %v", err)
+	}
 
 	isConfidential, err := isConfidentialRuntimeClass(ctx, clientset, "test-runtime-class")
 	if err != nil {
@@ -791,7 +794,10 @@ func TestIsConfidentialRuntimeClass(t *testing.T) {
 		},
 		Handler: "non-confidential-handler",
 	}
-	clientset.NodeV1().RuntimeClasses().Create(ctx, nonConfidentialRuntimeClass, metav1.CreateOptions{})
+	_, err = clientset.NodeV1().RuntimeClasses().Create(ctx, nonConfidentialRuntimeClass, metav1.CreateOptions{})
+	if err != nil {
+		t.Fatalf("expected no error, got %v", err)
+	}
 
 	isConfidential, err = isConfidentialRuntimeClass(ctx, clientset, "test-runtime-class-non-confidential")
 	if err != nil {

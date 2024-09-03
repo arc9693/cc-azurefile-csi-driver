@@ -24,8 +24,8 @@ type DirectVolume interface {
 	Add(volumePath string, mountInfo string) error
 	Remove(volumePath string) error
 	VolumeMountInfo(volumePath string) (*volume.MountInfo, error)
-	RecordSandboxId(sandboxId string, volumePath string) error
-	GetSandboxIdForVolume(volumePath string) (string, error)
+	RecordSandboxID(sandboxID string, volumePath string) error
+	GetSandboxIDForVolume(volumePath string) (string, error)
 }
 
 // Ensure the existing functions implement the interface
@@ -45,10 +45,10 @@ func (dv *directVolume) VolumeMountInfo(volumePath string) (*volume.MountInfo, e
 	return volume.VolumeMountInfo(volumePath)
 }
 
-func (dv *directVolume) RecordSandboxId(sandboxId string, volumePath string) error {
-	return volume.RecordSandboxId(sandboxId, volumePath)
+func (dv *directVolume) RecordSandboxID(sandboxID string, volumePath string) error {
+	return volume.RecordSandboxId(sandboxID, volumePath)
 }
 
-func (dv *directVolume) GetSandboxIdForVolume(volumePath string) (string, error) {
+func (dv *directVolume) GetSandboxIDForVolume(volumePath string) (string, error) {
 	return volume.GetSandboxIdForVolume(volumePath)
 }

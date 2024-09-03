@@ -60,33 +60,34 @@ func (mr *MockDirectVolumeMockRecorder) Add(volumePath, mountInfo interface{}) *
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Add", reflect.TypeOf((*MockDirectVolume)(nil).Add), volumePath, mountInfo)
 }
 
-// GetSandboxIdForVolume mocks base method.
-func (m *MockDirectVolume) GetSandboxIdForVolume(volumePath string) (string, error) {
+// GetSandboxIDForVolume mocks base method.
+// nolint: var-naming
+func (m *MockDirectVolume) GetSandboxIDForVolume(volumePath string) (string, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GetSandboxIdForVolume", volumePath)
+	ret := m.ctrl.Call(m, "GetSandboxIDForVolume", volumePath)
 	ret0, _ := ret[0].(string)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
-// GetSandboxIdForVolume indicates an expected call of GetSandboxIdForVolume.
-func (mr *MockDirectVolumeMockRecorder) GetSandboxIdForVolume(volumePath interface{}) *gomock.Call {
+// GetSandboxIDForVolume indicates an expected call of GetSandboxIDForVolume.
+func (mr *MockDirectVolumeMockRecorder) GetSandboxIDForVolume(volumePath interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSandboxIdForVolume", reflect.TypeOf((*MockDirectVolume)(nil).GetSandboxIdForVolume), volumePath)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetSandboxIDForVolume", reflect.TypeOf((*MockDirectVolume)(nil).GetSandboxIDForVolume), volumePath)
 }
 
-// RecordSandboxId mocks base method.
-func (m *MockDirectVolume) RecordSandboxId(sandboxId, volumePath string) error {
+// RecordSandboxID mocks base method.
+func (m *MockDirectVolume) RecordSandboxID(sandboxID, volumePath string) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "RecordSandboxId", sandboxId, volumePath)
+	ret := m.ctrl.Call(m, "RecordSandboxID", sandboxID, volumePath)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
-// RecordSandboxId indicates an expected call of RecordSandboxId.
-func (mr *MockDirectVolumeMockRecorder) RecordSandboxId(sandboxId, volumePath interface{}) *gomock.Call {
+// RecordSandboxID indicates an expected call of RecordSandboxID.
+func (mr *MockDirectVolumeMockRecorder) RecordSandboxID(sandboxID, volumePath interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RecordSandboxId", reflect.TypeOf((*MockDirectVolume)(nil).RecordSandboxId), sandboxId, volumePath)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "RecordSandboxID", reflect.TypeOf((*MockDirectVolume)(nil).RecordSandboxID), sandboxID, volumePath)
 }
 
 // Remove mocks base method.

@@ -68,7 +68,10 @@ func TestGetRuntimeClassForPod(t *testing.T) {
 			RuntimeClassName: &runtimeClassName,
 		},
 	}
-	clientset.CoreV1().Pods("default").Create(ctx, pod, metav1.CreateOptions{})
+	_, err = clientset.CoreV1().Pods("default").Create(ctx, pod, metav1.CreateOptions{})
+	if err != nil {
+		t.Fatalf("expected no error, got %v", err)
+	}
 
 	runtimeClass, err := getRuntimeClassForPod(ctx, clientset, "test-pod", "default")
 	if err != nil {
@@ -87,7 +90,10 @@ func TestGetRuntimeClassForPod(t *testing.T) {
 		},
 		Spec: corev1.PodSpec{},
 	}
-	clientset.CoreV1().Pods("default").Create(ctx, podWithoutRuntimeClass, metav1.CreateOptions{})
+	_, err = clientset.CoreV1().Pods("default").Create(ctx, podWithoutRuntimeClass, metav1.CreateOptions{})
+	if err != nil {
+		t.Fatalf("expected no error, got %v", err)
+	}
 
 	runtimeClass, err = getRuntimeClassForPod(ctx, clientset, "test-pod-no-runtime", "default")
 	if err != nil {
