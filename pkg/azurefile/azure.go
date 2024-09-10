@@ -52,13 +52,11 @@ var (
 
 func getRuntimeClassForPod(ctx context.Context, kubeClient clientset.Interface, podName string, podNameSpace string) (string, error) {
 	if kubeClient == nil {
-		klog.Warningf("kubeClient is nil")
 		return "", fmt.Errorf("kubeClient is nil")
 	}
 	// Get runtime class for pod
 	pod, err := kubeClient.CoreV1().Pods(podNameSpace).Get(ctx, podName, metav1.GetOptions{})
 	if err != nil {
-		klog.Warningf("Get pod(%s) failed with error: %v", podName, err)
 		return "", err
 	}
 	if pod.Spec.RuntimeClassName != nil {
